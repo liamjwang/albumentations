@@ -862,6 +862,7 @@ class ShiftScaleRotate(Affine):
         scale_limit: SymmetricRangeType = (-0.1, 0.1)
         rotate_limit: SymmetricRangeType = (-45, 45)
         interpolation: InterpolationType = cv2.INTER_LINEAR
+        mask_interpolation: InterpolationType = cv2.INTER_NEAREST
         border_mode: BorderModeType = cv2.BORDER_REFLECT_101
         value: ColorType = 0
         mask_value: ColorType = 0
@@ -892,6 +893,7 @@ class ShiftScaleRotate(Affine):
         scale_limit: ScaleFloatType = (-0.1, 0.1),
         rotate_limit: ScaleFloatType = (-45, 45),
         interpolation: int = cv2.INTER_LINEAR,
+        mask_interpolation: int = cv2.INTER_NEAREST,
         border_mode: int = cv2.BORDER_REFLECT_101,
         value: ColorType = 0,
         mask_value: ColorType = 0,
@@ -907,7 +909,7 @@ class ShiftScaleRotate(Affine):
             rotate=rotate_limit,
             shear=(0, 0),
             interpolation=interpolation,
-            mask_interpolation=cv2.INTER_NEAREST,
+            mask_interpolation=mask_interpolation,
             cval=value,
             cval_mask=mask_value,
             mode=border_mode,
@@ -937,6 +939,7 @@ class ShiftScaleRotate(Affine):
             "scale_limit": to_tuple(self.scale_limit, bias=-1.0),
             "rotate_limit": self.rotate_limit,
             "interpolation": self.interpolation,
+            "mask_interpolation": self.mask_interpolation,
             "border_mode": self.border_mode,
             "value": self.value,
             "mask_value": self.mask_value,
