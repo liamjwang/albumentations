@@ -238,7 +238,7 @@ class BaseDistortion(DualTransform):
         return fgeometric.remap_keypoints_via_mask(keypoints, map_x, map_y, params["shape"])
 
     def get_transform_init_args_names(self) -> tuple[str, ...]:
-        return "interpolation", "mask_interpolation", "keypoint_remapping_method"
+        return "interpolation", "mask_interpolation", "keypoint_remapping_method", "border_mode", "fill", "fill_mask"
 
 
 class ElasticTransform(BaseDistortion):
@@ -400,6 +400,10 @@ class ElasticTransform(BaseDistortion):
             "approximate",
             "same_dxdy",
             "noise_distribution",
+            "keypoint_remapping_method",
+            "border_mode",
+            "fill",
+            "fill_mask",
         )
 
 
