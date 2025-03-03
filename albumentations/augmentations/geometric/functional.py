@@ -1599,7 +1599,7 @@ def generate_displacement_fields(
         ).astype(np.float32)
 
     # # Apply Gaussian blur if needed using fast OpenCV operations
-    # if kernel_size != (0, 0):
+     # When kernel_size is (0,0) cv2.GaussianBlur auto computes the kernel size
     # Reshape to 2D array (combining first dimension with height)
     shape = fields.shape
     fields = fields.reshape(-1, shape[-1])
