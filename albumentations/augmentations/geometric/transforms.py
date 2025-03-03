@@ -123,6 +123,7 @@ class ElasticTransform(DualTransform):
         sigma: float = 50,
         alpha_affine: None = None,
         interpolation: int = cv2.INTER_LINEAR,
+        mask_interpolation: int = cv2.INTER_NEAREST,
         border_mode: int = cv2.BORDER_REFLECT_101,
         value: ScalarType | list[ScalarType] | None = None,
         mask_value: ScalarType | list[ScalarType] | None = None,
@@ -135,6 +136,7 @@ class ElasticTransform(DualTransform):
         self.alpha = alpha
         self.sigma = sigma
         self.interpolation = interpolation
+        self.mask_interpolation = mask_interpolation
         self.border_mode = border_mode
         self.value = value
         self.mask_value = mask_value
@@ -165,7 +167,7 @@ class ElasticTransform(DualTransform):
             mask,
             self.alpha,
             self.sigma,
-            cv2.INTER_NEAREST,
+            self.mask_interpolation,
             self.border_mode,
             self.mask_value,
             np.random.RandomState(random_seed),
