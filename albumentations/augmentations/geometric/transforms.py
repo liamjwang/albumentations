@@ -105,6 +105,7 @@ class ElasticTransform(DualTransform):
             deprecated="Use Affine transform to get affine effects",
         )
         interpolation: InterpolationType = cv2.INTER_LINEAR
+        mask_interpolation: InterpolationType = cv2.INTER_NEAREST
         border_mode: BorderModeType = cv2.BORDER_REFLECT_101
         value: int | float | list[int] | list[float] | None = Field(
             default=None,
@@ -196,6 +197,7 @@ class ElasticTransform(DualTransform):
             "alpha",
             "sigma",
             "interpolation",
+            "mask_interpolation",
             "border_mode",
             "value",
             "mask_value",
