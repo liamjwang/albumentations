@@ -124,6 +124,15 @@ class BaseDistortion(DualTransform):
             cv2.INTER_LANCZOS4,
         ]
         keypoint_remapping_method: Literal["direct", "mask"]
+        border_mode: Literal[
+            cv2.BORDER_CONSTANT,
+            cv2.BORDER_REPLICATE,
+            cv2.BORDER_REFLECT,
+            cv2.BORDER_WRAP,
+            cv2.BORDER_REFLECT_101,
+        ]
+        fill: tuple[float, ...] | float
+        fill_mask: tuple[float, ...] | float
 
     def __init__(
         self,
@@ -313,6 +322,15 @@ class ElasticTransform(BaseDistortion):
         same_dxdy: bool
         noise_distribution: Literal["gaussian", "uniform"]
         keypoint_remapping_method: Literal["direct", "mask"]
+        border_mode: Literal[
+            cv2.BORDER_CONSTANT,
+            cv2.BORDER_REPLICATE,
+            cv2.BORDER_REFLECT,
+            cv2.BORDER_WRAP,
+            cv2.BORDER_REFLECT_101,
+        ]
+        fill: tuple[float, ...] | float
+        fill_mask: tuple[float, ...] | float
 
     def __init__(
         self,
