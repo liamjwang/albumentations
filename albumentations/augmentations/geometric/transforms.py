@@ -344,7 +344,7 @@ class ElasticTransform(BaseDistortion):
         data: dict[str, Any],
     ) -> dict[str, Any]:
         height, width = params["shape"][:2]
-        kernel_size = (0, 0) if self.approximate else (17, 17)
+        kernel_size = (17, 17) if self.approximate else (0, 0)
 
         # Generate displacement fields
         dx, dy = fgeometric.generate_displacement_fields(
